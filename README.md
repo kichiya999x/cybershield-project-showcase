@@ -31,9 +31,9 @@ npm run preview
 
 ## Design reference
 
-The approved CyberShield UX Style Guide Showcase drives the navy header/hero, uppercase blue headings, light-blue sections, white bordered cards, role-based screenshot presentation, and paired research-result panels. Mobile preserves the same information order and uses single-column content where necessary. No decorative cybersecurity stock imagery or fake system screens are used.
+The current redesign combines the approved CyberShield identity with a Kaiko-inspired editorial composition: a spacious blue hero, lightweight display typography, an overlapping ivory reading surface, thin dividers, varied section layouts, and the real role-based dashboards as the central visual. The reference informed composition only; no Kaiko branding, artwork, healthcare copy, or proprietary assets are used. Mobile preserves the same information order and intentionally restacks dense evidence and system content. No decorative cybersecurity stock imagery or fake system screens are used.
 
-The original standalone hero photo was not supplied. The current hero uses solid navy and the approved typographic hierarchy. Replace only the backdrop when an approved, suitable source photo becomes available. The mockup itself is not shipped as a website asset.
+The original standalone hero photo was not supplied. The current hero uses an abstract CSS texture over the project blue, with no representational image or copied reference artwork. The mockup itself is not shipped as a website asset. See `UI_REDESIGN_NOTES.md` and `UI_REDESIGN_QA.md` for the redesign rationale, baseline, browser checks, and known limitations.
 
 ## Update content and results
 

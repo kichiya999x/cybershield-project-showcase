@@ -1,5 +1,5 @@
 import { team } from "../data/content";
-import { Icon, Brand, SectionHeading } from "../components/Shared";
+import { Icon, Brand, Reveal, SectionHeading } from "../components/Shared";
 const methods = [
   [
     "document",
@@ -24,17 +24,22 @@ const methods = [
 ];
 export function Methodology() {
   return (
-    <section className="section" id="methodology">
+    <section className="section methodology-section" id="methodology">
       <div className="container">
-        <SectionHeading number="07" title="Methodology">
-          Structured development. Evidence-based evaluation.
-        </SectionHeading>
+        <Reveal>
+          <SectionHeading number="07" title="Methodology">
+            Structured development. Evidence-based evaluation.
+          </SectionHeading>
+        </Reveal>
         <div className="method-grid">
-          {methods.map(([icon, title, text]) => (
+          {methods.map(([icon, title, text], index) => (
             <article key={title}>
-              <Icon name={icon} />
-              <h3>{title}</h3>
-              <p>{text}</p>
+              <span className="method-index">0{index + 1}</span>
+              <div>
+                <Icon name={icon} />
+                <h3>{title}</h3>
+                <p>{text}</p>
+              </div>
             </article>
           ))}
         </div>
@@ -48,12 +53,17 @@ export function Methodology() {
 }
 export function Demo() {
   return (
-    <section className="section section-tint" id="demo">
+    <section className="section demo-section" id="demo">
       <div className="container">
-        <SectionHeading number="08" title="See CyberShield in Action" />
+        <Reveal>
+          <SectionHeading number="08" title="System Walkthrough">
+            A guided demonstration will be added after a sanitized video and
+            transcript are approved.
+          </SectionHeading>
+        </Reveal>
         <div className="demo-panel">
           <div>
-            <p className="eyebrow">SYSTEM WALKTHROUGH</p>
+            <p className="eyebrow">PLANNED WALKTHROUGH</p>
             <h3>
               Follow a record.
               <br />
@@ -65,12 +75,12 @@ export function Demo() {
             </p>
           </div>
           <div className="video-placeholder">
-            <span className="video-symbol" aria-hidden="true">
-              ▷
-            </span>
-            <strong>Sanitized demonstration video</strong>
-            <p>Coming soon</p>
-            <span>No public sign-in is required for this showcase.</span>
+            <span>VIDEO STATUS</span>
+            <strong>Sanitized demonstration not yet supplied.</strong>
+            <p>
+              Playback will remain user-initiated and include captions or a
+              transcript when the approved media is available.
+            </p>
           </div>
         </div>
       </div>
@@ -79,23 +89,19 @@ export function Demo() {
 }
 export function Team() {
   return (
-    <section className="section" id="team">
+    <section className="section team-section" id="team">
       <div className="container">
-        <SectionHeading number="09" title="Hopeful Innovations">
-          The research team behind CyberShield.
-        </SectionHeading>
+        <Reveal>
+          <SectionHeading number="09" title="Hopeful Innovations">
+            The research team behind CyberShield.
+          </SectionHeading>
+        </Reveal>
         <div className="team-grid">
-          {team.map((name) => (
+          {team.map((name, index) => (
             <article className="team-member" key={name}>
-              <span className="initials" aria-hidden="true">
-                {name
-                  .split(" ")
-                  .filter((x) => x.length > 2)
-                  .map((x) => x[0])
-                  .slice(0, 2)
-                  .join("")}
-              </span>
+              <span aria-hidden="true">0{index + 1}</span>
               <h3>{name}</h3>
+              <p>Researcher</p>
             </article>
           ))}
         </div>
@@ -149,9 +155,14 @@ export function Footer() {
             Hopeful Innovations · FEU Institute of Technology
             <br />© 2026 CyberShield academic project
           </p>
-          <a href="https://icons8.com" target="_blank" rel="noreferrer">
-            Icons by Icons8
-          </a>
+          <nav aria-label="Footer navigation">
+            <a href="#project">Project</a>
+            <a href="#system">System</a>
+            <a href="#results">Results</a>
+            <a href="https://icons8.com" target="_blank" rel="noreferrer">
+              Icons by Icons8
+            </a>
+          </nav>
         </div>
       </footer>
     </>

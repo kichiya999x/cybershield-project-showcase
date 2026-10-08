@@ -55,11 +55,26 @@ export const features = [
   },
 ];
 export const workflow = [
-  "Inspection Encoding",
-  "Validation & Review",
-  "Issuance / Return Processing",
-  "Centralized Record Update",
-  "Audit Trail & Monitoring",
+  {
+    title: "Inspection Encoding",
+    text: "Inspectors record structured findings and supporting evidence.",
+  },
+  {
+    title: "Validation & Review",
+    text: "Submitted records are checked for conflicts and items needing review.",
+  },
+  {
+    title: "Issuance / Return Processing",
+    text: "Authorized logistics personnel process assignment and return activity.",
+  },
+  {
+    title: "Centralized Record Update",
+    text: "Registry, status, and custody information are updated together.",
+  },
+  {
+    title: "Audit Trail & Monitoring",
+    text: "Recorded actions and compliance alerts support accountability.",
+  },
 ];
 export const controls = [
   {
