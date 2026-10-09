@@ -6,7 +6,7 @@ export default function Security() {
     <section className="section security-section" id="security">
       <div className="container">
         <Reveal>
-          <SectionHeading number="04" title="Cybersecurity by Design">
+          <SectionHeading number="05" title="Cybersecurity by Design">
             Layered controls support record integrity, controlled access, and
             traceable activity.
           </SectionHeading>
@@ -14,15 +14,11 @@ export default function Security() {
         <div className="security-layout">
           <div className="security-intro">
             <p className="eyebrow">CONTROL MODEL</p>
-            <h3>
-              Access with purpose.
-              <br />
-              Activity with a record.
-            </h3>
+            <h3>Identity, permissions, and traceable activity.</h3>
             <p>
-              Evidence labels distinguish implemented features, evaluated
-              behavior, documented controls, and work that still requires
-              deployment-level validation.
+              The prototype combines identity checks, role permissions,
+              protected records, and audit logging. Some controls still require
+              staging or deployment-level validation.
             </p>
           </div>
           <div className="security-rows">
@@ -34,9 +30,6 @@ export default function Security() {
                   <h3>{control.title}</h3>
                   <p>{control.detail}</p>
                 </div>
-                <span className={`control-status ${control.kind}`}>
-                  {control.status}
-                </span>
               </article>
             ))}
           </div>
