@@ -81,47 +81,40 @@ export const controls = [
     icon: "key",
     title: "Multi-Factor Authentication",
     detail: "Time-based one-time passwords add a second identity check.",
-    status: "Implemented · further validation",
-    kind: "implemented",
   },
   {
     icon: "users",
     title: "Role-Based Access Control",
     detail:
       "Permissions separate administrative and operational responsibilities.",
-    status: "Evaluated · PT04: 5/5 passed",
-    kind: "evaluated",
+
   },
   {
     icon: "security",
     title: "Zero Trust Principles",
     detail:
       "Identity verification and least-privilege access guide the design.",
-    status: "Design approach",
-    kind: "design",
+
   },
   {
     icon: "fingerprint",
     title: "Argon2id Password Hashing",
     detail:
       "Password hashing is specified in the security design and requirements.",
-    status: "Documented control",
-    kind: "design",
+
   },
   {
     icon: "security",
     title: "AES-256 Data Protection",
     detail: "At-rest protection requires separate deployment-level validation.",
-    status: "Further validation required",
-    kind: "pending",
+
   },
   {
     icon: "document",
     title: "SHA-256 Audit Logging",
     detail:
       "Tamper-evident audit records support accountability and traceability.",
-    status: "Evaluated · PT03: 5/5 passed",
-    kind: "evaluated",
+
   },
 ];
 export const screenshots = [
@@ -149,7 +142,7 @@ export const screenshots = [
     id: "administrator",
     label: "Administrator",
     title: "Administrator Dashboard",
-    image: null,
+    image: "/screenshots/admin-dashboard.png",
     width: 1996,
     height: 1248,
     caption:

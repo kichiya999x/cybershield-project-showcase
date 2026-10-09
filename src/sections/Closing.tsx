@@ -22,6 +22,12 @@ const methods = [
     "Threat modeling and security verification guide testing.",
   ],
 ];
+const teamPhotos = [
+  "/team/matthew-lawrence-abarquez.jpg",
+  "/team/kiesha-conde.jpeg",
+  "/team/charles-daryl-dee.jpg",
+  "/team/mary-anne-ramil.jpg",
+];
 export function Methodology() {
   return (
     <section className="section methodology-section" id="methodology">
@@ -100,8 +106,18 @@ export function Team() {
           {team.map((name, index) => (
             <article className="team-member" key={name}>
               <span aria-hidden="true">0{index + 1}</span>
-              <h3>{name}</h3>
-              <p>Researcher</p>
+              <img
+                className={`team-photo team-photo-${index + 1}`}
+                src={teamPhotos[index]}
+                width="600"
+                height="600"
+                alt={`${name}, CyberShield researcher`}
+                loading="lazy"
+              />
+              <div className="team-member-copy">
+                <h3>{name}</h3>
+                <p>Researcher</p>
+              </div>
             </article>
           ))}
         </div>

@@ -4,23 +4,46 @@ import { Icon, Reveal, SectionHeading } from "../components/Shared";
 export function Hero() {
   return (
     <section id="home" className="hero">
-      <div className="hero-texture" aria-hidden="true" />
+      <img
+        className="hero-texture"
+        src="/hero/cybershield-poster-atmosphere.png"
+        alt=""
+        aria-hidden="true"
+      />
       <div className="container hero-inner">
-        <p className="eyebrow hero-kicker">
-          HOPEFUL INNOVATIONS <span>·</span> ACADEMIC PROJECT
-        </p>
-        <h1>Firearm traceability.<br />Clear accountability.</h1>
-        <p className="hero-summary">
-          A centralized platform designed to make post-inspection firearm
-          records more secure, consistent, and traceable.
-        </p>
-        <div className="hero-actions">
-          <a className="button primary" href="#project">
-            Explore the project
-          </a>
-          <a className="text-link" href="#results">
-            Read the research
-          </a>
+        <div className="hero-copy">
+          <p className="eyebrow hero-kicker">
+            CYBERSHIELD <span>·</span> RESEARCH SHOWCASE
+          </p>
+          <h1>
+            <span>Secure traceability,</span>
+            <span>accountability</span>
+            <span>&amp; protection.</span>
+          </h1>
+          <p className="hero-summary">
+            A centralized firearm traceability and accountability platform
+            developed for the National Police Commission — Installations and
+            Logistics Service.
+          </p>
+          <div className="hero-actions">
+            <a className="button primary" href="#project">
+              Explore the project
+            </a>
+            <a className="text-link" href="#results">
+              View research findings
+            </a>
+          </div>
+        </div>
+        <div className="hero-visual" aria-label="CyberShield weapon tracing system">
+          <div className="hero-mark-crop">
+            <img
+              className="hero-mark"
+              src="/logos/CyberShield_Logo_Transparent.png"
+              width="526"
+              height="638"
+              alt="CyberShield shield emblem"
+            />
+          </div>
         </div>
         <div className="hero-footnote">
           <span>CYBERSHIELD / 2026</span>

@@ -38,7 +38,7 @@ export default function Results() {
                 </div>
               ))}
               <div className="chart-scale">
-                <span>0</span>
+                <span>4.73</span>
                 <span>Score out of 5</span>
                 <span>5</span>
               </div>
