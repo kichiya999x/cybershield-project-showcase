@@ -23,7 +23,7 @@ export interface DashboardScreenshot {
 export interface TeamMember {
   name: string;
   photo: string;
-  role: "Researcher";
+  role: string;
 }
 
 export const projectTitle =
@@ -136,8 +136,8 @@ export const securityResults = {
 };
 
 export const team: TeamMember[] = [
-  { name: "Matthew Lawrence T. Abarquez", photo: "/team/matthew-lawrence-abarquez.jpg", role: "Researcher" },
-  { name: "Kiesha P. Conde", photo: "/team/kiesha-conde.jpeg", role: "Researcher" },
-  { name: "Charles Daryl O. Dee", photo: "/team/charles-daryl-dee.jpg", role: "Researcher" },
-  { name: "Mary Anne R. Ramil", photo: "/team/mary-anne-ramil.jpg", role: "Researcher" },
+  { name: "Matthew Lawrence T. Abarquez", photo: "/team/matthew-lawrence-abarquez.jpg", role: "Documentation & Penetration Testing" },
+  { name: "Kiesha P. Conde", photo: "/team/kiesha-conde.jpeg", role: "Full-Stack Developer & UI/UX Design" },
+  { name: "Charles Daryl O. Dee", photo: "/team/charles-daryl-dee.jpg", role: "Project Manager & Full-Stack Developer" },
+  { name: "Mary Anne R. Ramil", photo: "/team/mary-anne-ramil.jpg", role: "Research & Documentation" },
 ];
