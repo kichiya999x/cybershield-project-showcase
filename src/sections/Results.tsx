@@ -5,7 +5,7 @@ export default function Results() {
     <section className="section results-section" id="results">
       <div className="container">
         <Reveal>
-          <SectionHeading number="06" title="Research Results">
+          <SectionHeading number="07" title="Research Results">
             Evaluated in a controlled academic environment. Findings include
             both strengths and remaining work.
           </SectionHeading>
@@ -38,7 +38,7 @@ export default function Results() {
                 </div>
               ))}
               <div className="chart-scale">
-                <span>4.73</span>
+                <span>0</span>
                 <span>Score out of 5</span>
                 <span>5</span>
               </div>
@@ -112,6 +112,9 @@ export default function Results() {
             </p>
           </article>
         </div>
+        <p className="results-summary-link">
+          <a href="/research/">Read the complete research summary</a>
+        </p>
       </div>
     </section>
   );

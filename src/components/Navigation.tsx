@@ -5,7 +5,7 @@ const links = [
   ["Project", "project"],
   ["Security", "security"],
   ["System", "system"],
-  ["Evidence", "results"],
+  ["Results", "results"],
   ["Method", "methodology"],
   ["Team", "team"],
 ];

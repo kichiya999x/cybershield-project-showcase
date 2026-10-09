@@ -22,19 +22,14 @@ const methods = [
     "Threat modeling and security verification guide testing.",
   ],
 ];
-const teamPhotos = [
-  "/team/matthew-lawrence-abarquez.jpg",
-  "/team/kiesha-conde.jpeg",
-  "/team/charles-daryl-dee.jpg",
-  "/team/mary-anne-ramil.jpg",
-];
 export function Methodology() {
   return (
     <section className="section methodology-section" id="methodology">
       <div className="container">
         <Reveal>
-          <SectionHeading number="07" title="Methodology">
-            Structured development. Evidence-based evaluation.
+          <SectionHeading number="08" title="Methodology">
+            Methods used to develop, test, and evaluate the academic
+            prototype.
           </SectionHeading>
         </Reveal>
         <div className="method-grid">
@@ -57,42 +52,6 @@ export function Methodology() {
     </section>
   );
 }
-export function Demo() {
-  return (
-    <section className="section demo-section" id="demo">
-      <div className="container">
-        <Reveal>
-          <SectionHeading number="08" title="System Walkthrough">
-            A guided demonstration will be added after a sanitized video and
-            transcript are approved.
-          </SectionHeading>
-        </Reveal>
-        <div className="demo-panel">
-          <div>
-            <p className="eyebrow">PLANNED WALKTHROUGH</p>
-            <h3>
-              Follow a record.
-              <br />
-              Understand the workflow.
-            </h3>
-            <p>
-              Dashboard · Inspection · Validation · Issuance · Chain of Custody
-              · Audit Trail
-            </p>
-          </div>
-          <div className="video-placeholder">
-            <span>VIDEO STATUS</span>
-            <strong>Sanitized demonstration not yet supplied.</strong>
-            <p>
-              Playback will remain user-initiated and include captions or a
-              transcript when the approved media is available.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
 export function Team() {
   return (
     <section className="section team-section" id="team">
@@ -103,20 +62,20 @@ export function Team() {
           </SectionHeading>
         </Reveal>
         <div className="team-grid">
-          {team.map((name, index) => (
-            <article className="team-member" key={name}>
+          {team.map((member, index) => (
+            <article className="team-member" key={member.name}>
               <span aria-hidden="true">0{index + 1}</span>
               <img
                 className={`team-photo team-photo-${index + 1}`}
-                src={teamPhotos[index]}
+                src={member.photo}
                 width="600"
                 height="600"
-                alt={`${name}, CyberShield researcher`}
+                alt={`${member.name}, CyberShield researcher`}
                 loading="lazy"
               />
               <div className="team-member-copy">
-                <h3>{name}</h3>
-                <p>Researcher</p>
+                <h3>{member.name}</h3>
+                <p>{member.role}</p>
               </div>
             </article>
           ))}

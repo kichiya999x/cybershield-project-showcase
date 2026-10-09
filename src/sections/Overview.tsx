@@ -1,4 +1,10 @@
-import { features, problems, projectTitle, workflow } from "../data/content";
+import {
+  features,
+  interfaceDisclosure,
+  problems,
+  projectTitle,
+  workflow,
+} from "../data/content";
 import { Icon, Reveal, SectionHeading } from "../components/Shared";
 
 export function Hero() {
@@ -6,7 +12,7 @@ export function Hero() {
     <section id="home" className="hero">
       <img
         className="hero-texture"
-        src="/hero/cybershield-poster-atmosphere.png"
+        src="/hero/cybershield-poster-atmosphere.webp"
         alt=""
         aria-hidden="true"
       />
@@ -21,16 +27,16 @@ export function Hero() {
             <span>&amp; protection.</span>
           </h1>
           <p className="hero-summary">
-            A centralized firearm traceability and accountability platform
-            developed for the National Police Commission — Installations and
-            Logistics Service.
+            An academic research prototype designed for centralized firearm
+            traceability and accountability within the National Police
+            Commission – Installations and Logistics Service context.
           </p>
           <div className="hero-actions">
             <a className="button primary" href="#project">
               Explore the project
             </a>
-            <a className="text-link" href="#results">
-              View research findings
+            <a className="text-link" href="/research/">
+              Read research summary
             </a>
           </div>
         </div>
@@ -38,7 +44,7 @@ export function Hero() {
           <div className="hero-mark-crop">
             <img
               className="hero-mark"
-              src="/logos/CyberShield_Logo_Transparent.png"
+              src="/logos/cybershield-hero-mark.webp"
               width="526"
               height="638"
               alt="CyberShield shield emblem"
@@ -91,7 +97,7 @@ export function Introduction() {
     <section className="section ivory-section introduction-section" id="features">
       <div className="container">
         <Reveal>
-          <SectionHeading number="02" title="Introducing CyberShield">
+          <SectionHeading number="03" title="Introducing CyberShield">
             One centralized platform for the post-inspection lifecycle of
             firearm records.
           </SectionHeading>
@@ -135,7 +141,7 @@ export function Introduction() {
             <figcaption>
               <span>01 / Developed interface</span>
               <strong>Logistics Officer Dashboard</strong>
-              <small>Interface shown using sanitized demonstration data.</small>
+              <small>{interfaceDisclosure}</small>
             </figcaption>
           </figure>
         </div>
@@ -149,7 +155,7 @@ export function Workflow() {
     <section className="section workflow-section">
       <div className="container">
         <Reveal>
-          <SectionHeading number="03" title="How CyberShield Works">
+          <SectionHeading number="04" title="How CyberShield Works">
             A five-stage path from field inspection to an accountable record.
           </SectionHeading>
         </Reveal>

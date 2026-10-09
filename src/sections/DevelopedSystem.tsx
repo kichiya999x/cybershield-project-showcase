@@ -4,7 +4,7 @@ import {
   useState,
   type KeyboardEvent,
 } from "react";
-import { screenshots } from "../data/content";
+import { interfaceDisclosure, screenshots } from "../data/content";
 import { Reveal, SectionHeading } from "../components/Shared";
 export default function DevelopedSystem() {
   const [index, setIndex] = useState(0);
@@ -56,8 +56,9 @@ export default function DevelopedSystem() {
     <section className="section system-section" id="system">
       <div className="container">
         <Reveal>
-          <SectionHeading number="05" title="Developed System">
-            Explore the actual role-based interfaces of the academic prototype.
+          <SectionHeading number="06" title="Developed System">
+            Review the role-based workspaces produced for the academic
+            prototype.
           </SectionHeading>
         </Reveal>
         <div className="gallery">
@@ -93,47 +94,37 @@ export default function DevelopedSystem() {
             aria-labelledby={`dashboard-tab-${s.id}`}
           >
             <div className="gallery-image" key={`image-${s.id}`}>
-              {s.image ? (
-                <button
-                  className="image-button"
-                  onClick={openDialog}
-                  aria-label={`Enlarge ${s.title}`}
-                >
-                  {loading && !imageError && (
-                    <span className="image-loading">Loading dashboard preview…</span>
-                  )}
-                  {imageError && (
-                    <span className="image-loading image-error">
-                      Dashboard preview is unavailable. Choose another role.
-                    </span>
-                  )}
-                  <img
-                    key={s.image}
-                    src={s.image}
-                    alt={`${s.title}, displaying sample records and role-specific navigation`}
-                    width={s.width}
-                    height={s.height}
-                    loading="lazy"
-                    onLoad={() => setLoading(false)}
-                    onError={() => {
-                      setLoading(false);
-                      setImageError(true);
-                    }}
-                  />
-                  <span className="enlarge-label">
-                    <span>View full screenshot</span>
-                    <span aria-hidden="true">＋</span>
+              <button
+                className="image-button"
+                onClick={openDialog}
+                aria-label={`Enlarge ${s.title}`}
+              >
+                {loading && !imageError && (
+                  <span className="image-loading">Loading dashboard preview…</span>
+                )}
+                {imageError && (
+                  <span className="image-loading image-error">
+                    Dashboard preview is unavailable. Choose another role.
                   </span>
-                </button>
-              ) : (
-                <div className="screenshot-placeholder">
-                  <span className="placeholder-mark" aria-hidden="true">
-                    ▧
-                  </span>
-                  <strong>Sanitized Administrator Dashboard</strong>
-                  <p>Public screenshot pending</p>
-                </div>
-              )}
+                )}
+                <img
+                  key={s.image}
+                  src={s.image}
+                  alt={`${s.title}, displaying non-operational demonstration records and role-specific navigation`}
+                  width={s.width}
+                  height={s.height}
+                  loading="lazy"
+                  onLoad={() => setLoading(false)}
+                  onError={() => {
+                    setLoading(false);
+                    setImageError(true);
+                  }}
+                />
+                <span className="enlarge-label">
+                  <span>View full screenshot</span>
+                  <span aria-hidden="true">＋</span>
+                </span>
+              </button>
             </div>
             <div
               className="gallery-caption"
@@ -143,11 +134,7 @@ export default function DevelopedSystem() {
               <p className="eyebrow">ROLE-BASED WORKSPACE / 0{index + 1}</p>
               <h3>{s.title}</h3>
               <p>{s.caption}</p>
-              <p className="small">
-                {s.image
-                  ? "Interface shown using sanitized demonstration data."
-                  : "This placeholder will be replaced after the screenshot is sanitized."}
-              </p>
+              <p className="small">{interfaceDisclosure}</p>
               <div className="gallery-controls">
                 <button
                   onClick={() => move(-1)}
@@ -180,24 +167,21 @@ export default function DevelopedSystem() {
               Close <span aria-hidden="true">×</span>
             </button>
           </div>
-          {s.image && (
-            <div
-              className="zoom-region"
-              tabIndex={0}
-              role="region"
-              aria-label="Full-size screenshot; scroll to inspect"
-            >
-              <img
-                src={s.image}
-                width={s.width}
-                height={s.height}
-                alt={`${s.title} with demonstration data`}
-              />
-            </div>
-          )}
+          <div
+            className="zoom-region"
+            tabIndex={0}
+            role="region"
+            aria-label="Full-size screenshot; scroll to inspect"
+          >
+            <img
+              src={s.image}
+              width={s.width}
+              height={s.height}
+              alt={`${s.title} with non-operational demonstration data`}
+            />
+          </div>
           <p className="small">
-            Interface shown using sanitized demonstration data. Scroll within
-            the image to inspect details.
+            {interfaceDisclosure} Scroll within the image to inspect details.
           </p>
         </dialog>
       </div>

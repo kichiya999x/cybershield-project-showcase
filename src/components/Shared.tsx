@@ -70,9 +70,9 @@ export function Reveal({
     </div>
   );
 }
-export function Brand() {
+export function Brand({ href = "#home" }: { href?: string }) {
   return (
-    <a className="brand" href="#home" aria-label="CyberShield, back to top">
+    <a className="brand" href={href} aria-label="CyberShield">
       <img src="/logos/cybershield.webp" width="44" height="46" alt="" />
       <span>
         CYBERSHIELD<small>Research showcase</small>
