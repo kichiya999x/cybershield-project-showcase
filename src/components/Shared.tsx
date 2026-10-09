@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
 export function Icon({ name }: { name: string }) {
   return (
     <span className="icon" aria-hidden="true">
@@ -23,22 +23,59 @@ export function SectionHeading({
 }) {
   return (
     <div className="section-heading">
-      <span className="section-number" aria-hidden="true">
-        {number}
-      </span>
-      <div>
+      <div className="section-label" aria-hidden="true">
+        <span>{number}</span>
+        <span>CYBERSHIELD</span>
+      </div>
+      <div className="section-heading-copy">
         <h2>{title}</h2>
         {children && <p>{children}</p>}
       </div>
     </div>
   );
 }
-export function Brand() {
+export function Reveal({
+  children,
+  className = "",
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const node = ref.current;
+    if (
+      !node ||
+      !("IntersectionObserver" in window) ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      return;
+    }
+    node.classList.add("reveal-ready");
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          node.classList.add("reveal-visible");
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -6%" },
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
   return (
-    <a className="brand" href="#home" aria-label="CyberShield, back to top">
+    <div ref={ref} className={`reveal ${className}`.trim()}>
+      {children}
+    </div>
+  );
+}
+export function Brand({ href = "#home" }: { href?: string }) {
+  return (
+    <a className="brand" href={href} aria-label="CyberShield">
       <img src="/logos/cybershield.webp" width="44" height="46" alt="" />
       <span>
-        CYBERSHIELD<small>Academic project showcase</small>
+        CYBERSHIELD<small>Research showcase</small>
       </span>
     </a>
   );

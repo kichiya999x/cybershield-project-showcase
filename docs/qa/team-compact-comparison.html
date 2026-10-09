@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CyberShield team-section comparison</title>
+    <style>
+      * { box-sizing: border-box; }
+      body { margin: 0; padding: 20px; background: #dfe7ed; color: #0b2948; font-family: Arial, sans-serif; }
+      h1 { margin: 0 0 16px; font-size: 20px; }
+      main { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+      figure { margin: 0; min-width: 0; height: 800px; overflow: hidden; padding: 10px; background: #fff; border: 1px solid #b8c7d3; }
+      figcaption { margin-bottom: 8px; font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+      img { display: block; width: 100%; height: 740px; border: 0; background: #faf8ef; object-fit: contain; object-position: top; }
+      iframe { display: block; width: 1440px; height: 1400px; border: 0; background: #faf8ef; transform: scale(0.5); transform-origin: top left; }
+    </style>
+  </head>
+  <body>
+    <h1>Research Team / Hopeful Innovations — source and implementation</h1>
+    <main>
+      <figure>
+        <figcaption>Source section before redesign</figcaption>
+        <img src="/docs/qa/team-compact-reference.png" alt="Original oversized research-team section" />
+      </figure>
+      <figure>
+        <figcaption>Compact circular-profile implementation</figcaption>
+        <iframe id="implementation" src="/#methodology" title="Rendered CyberShield team implementation"></iframe>
+      </figure>
+    </main>
+    <script>
+      const frame = document.querySelector('#implementation');
+      frame.addEventListener('load', () => {
+        window.setTimeout(() => {
+          frame.contentWindow.location.hash = 'team';
+        }, 300);
+      });
+    </script>
+  </body>
+</html>

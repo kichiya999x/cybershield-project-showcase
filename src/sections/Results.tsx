@@ -1,16 +1,21 @@
 import { qualityResults, securityResults as r } from "../data/content";
-import { SectionHeading } from "../components/Shared";
+import { Reveal, SectionHeading } from "../components/Shared";
 export default function Results() {
   return (
-    <section className="section section-tint" id="results">
+    <section className="section results-section" id="results">
       <div className="container">
-        <SectionHeading number="06" title="Research Results">
-          Evaluated in a controlled academic environment. Findings include both
-          strengths and remaining work.
-        </SectionHeading>
+        <Reveal>
+          <SectionHeading number="07" title="Research Results">
+            Evaluated in a controlled academic environment. Findings include
+            both strengths and remaining work.
+          </SectionHeading>
+        </Reveal>
         <div className="results-grid">
-          <article className="card quality-panel">
-            <h3 className="panel-title">ISO/IEC 25010 Evaluation</h3>
+          <article className="quality-panel">
+            <div className="panel-heading">
+              <span>01</span>
+              <h3 className="panel-title">ISO/IEC 25010 Evaluation</h3>
+            </div>
             <div className="composite">
               <strong>
                 4.73 <span>/ 5.00</span>
@@ -46,8 +51,11 @@ export default function Results() {
               Source: Chapter 4, Tables 42–43, pp. 161–162.
             </p>
           </article>
-          <article className="card testing-panel">
-            <h3 className="panel-title">Security Testing Results</h3>
+          <article className="testing-panel">
+            <div className="panel-heading">
+              <span>02</span>
+              <h3 className="panel-title">Security Testing Results</h3>
+            </div>
             <div className="test-total">
               <strong>{r.total}</strong>
               <span>Security Test Cases</span>
@@ -104,6 +112,9 @@ export default function Results() {
             </p>
           </article>
         </div>
+        <p className="results-summary-link">
+          <a href="/research/">Read the complete research summary</a>
+        </p>
       </div>
     </section>
   );

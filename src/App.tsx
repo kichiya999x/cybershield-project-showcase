@@ -1,9 +1,10 @@
 import Navigation from "./components/Navigation";
 import { Hero, Problem, Introduction, Workflow } from "./sections/Overview";
+import ResearchContext from "./sections/ResearchContext";
 import Security from "./sections/Security";
 import DevelopedSystem from "./sections/DevelopedSystem";
 import Results from "./sections/Results";
-import { Methodology, Demo, Team, Footer } from "./sections/Closing";
+import { Methodology, Team, Footer } from "./sections/Closing";
 export default function App() {
   return (
     <>
@@ -14,13 +15,13 @@ export default function App() {
       <main id="main">
         <Hero />
         <Problem />
+        <ResearchContext />
         <Introduction />
         <Workflow />
         <Security />
         <DevelopedSystem />
         <Results />
         <Methodology />
-        <Demo />
         <Team />
       </main>
       <Footer />
