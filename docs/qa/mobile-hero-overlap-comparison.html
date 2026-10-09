@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CyberShield mobile hero overlap QA</title>
+    <style>
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        padding: 24px;
+        background: #071a2e;
+        color: #f6fbff;
+        font: 14px "Segoe UI", Arial, sans-serif;
+      }
+
+      h1 { margin: 0 0 8px; font-size: 24px; }
+      .note { margin: 0 0 20px; color: #b9cbe0; }
+
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+
+      figure {
+        margin: 0;
+        padding: 14px;
+        border: 1px solid #315475;
+        background: #0e2948;
+      }
+
+      figcaption { margin-bottom: 10px; font-weight: 700; }
+
+      .stage {
+        height: 900px;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        background: #fff;
+      }
+
+      .stage img {
+        width: 500px;
+        height: 900px;
+        object-fit: contain;
+        object-position: top;
+      }
+
+      .frame-wrap {
+        width: 390px;
+        height: 1100px;
+        transform: scale(0.81818);
+        transform-origin: top center;
+      }
+
+      iframe {
+        width: 390px;
+        height: 1100px;
+        border: 0;
+        background: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Mobile hero overlap fix · visual QA</h1>
+    <p class="note">Previous 500 × 900 source capture compared with the live 390 × 1100 implementation at the same top-of-page state.</p>
+    <div class="grid">
+      <figure>
+        <figcaption>Source baseline · hero-mobile-500x900.png</figcaption>
+        <div class="stage">
+          <img src="hero-mobile-500x900.png" alt="Previous mobile CyberShield hero" />
+        </div>
+      </figure>
+      <figure>
+        <figcaption>Implementation · live local preview</figcaption>
+        <div class="stage">
+          <div class="frame-wrap">
+            <iframe src="/" title="Fixed mobile CyberShield hero"></iframe>
+          </div>
+        </div>
+      </figure>
+    </div>
+  </body>
+</html>

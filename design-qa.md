@@ -1,61 +1,62 @@
-# Design QA
+# Design QA — Mobile Hero Overlap Fix
 
 ## Comparison targets
 
-- Source visual truth: `docs/qa/reference-current-hero.png` (2048 × 1233), `docs/qa/reference-poster.png` (1078 × 450), and `docs/qa/team-compact-reference.png` (3060 × 1814).
-- Combined comparison evidence: `docs/qa/hero-comparison.png` (1800 × 1400) and `docs/qa/team-compact-comparison.html` (source image and live implementation in the same browser view).
-- Browser-rendered implementation evidence: `docs/qa/hero-desktop-1440x900.png` (1440 × 900), `docs/qa/hero-mobile-500x900.png` (500 × 900), and the live `/`, `/#team`, and `/research/` routes captured in the Codex in-app browser during this QA pass.
-- CSS viewports: 1440 × 900 for desktop comparison; 390 × 844 for the Research Summary mobile refinement; additional responsive checks at 320 × 800, 768 × 1024, 1024 × 768, and 844 × 390.
-- Density normalization: browser captures were evaluated at their CSS viewport dimensions. The larger source captures were fitted with `object-fit: contain` on the comparison boards; no pixel-level measurement was inferred from the density mismatch.
-- State: public, unauthenticated academic showcase with the hero at rest, the team section in view, and the Research Summary at its document header.
+- Source visual truth: `C:/Users/kiesh/Downloads/CyberShield_Mobile_Hero_Overlap_Fix_Implementation_Plan.md` and `docs/qa/hero-mobile-500x900.png` (500 × 900 px).
+- Combined comparison evidence: `docs/qa/mobile-hero-overlap-comparison.html`, which places the source capture and the live fixed route in one browser view.
+- Browser-rendered implementation evidence: live `http://127.0.0.1:5173/` capture in the Codex in-app browser at a 390 × 1100 CSS viewport; the live route is also embedded in the combined comparison board.
+- Responsive geometry checks: 320, 360, 375, 390, 393, 430, 620, 621, 768, 860, 1024, and 1440 px wide.
+- Density normalization: the source is a 500 × 900 raster capture. The implementation was rendered at 390 CSS px wide with device-scale factor 1 and scaled to fit the 900 px comparison stage. No pixel-perfect size inference was made across the unequal source and implementation widths.
+- State: public, unauthenticated showcase; mobile menu closed; hero at the top-of-page resting state.
 
 ## Full-view comparison evidence
 
-The poster references and implementation retain the same dominant visual hierarchy: pale institutional background, blue typographic headline, asymmetric poster field, large CyberShield mark, academic navigation, and a warm off-white editorial transition into the content. The redesigned team section preserves the original section heading and four-person order while reducing the oversized ID-photo treatment to a compact circular directory.
+The combined browser board shows the original mobile poster composition beside the live fixed hero. The implementation preserves the established white header, blue editorial headline, academic description, calls to action, supplied CyberShield mark, continuous atmospheric background, divider, and two metadata labels. The mark and metadata now remain separate in normal document flow, with visible breathing room and no collision.
+
+The source capture predates approved copy refinements, so wording and CTA stacking were not treated as regressions from this CSS-only fix. No text, asset, component, or semantic-order changes were made for this task.
 
 ## Focused-region comparison evidence
 
-- Hero: the supplied CyberShield image remains an image asset rather than a CSS or SVG substitute. The white wordmark remains visible against the dark-blue poster field, and the mark stays fully contained at desktop and mobile breakpoints.
-- Team: the four original portraits remain unretouched, consistently cropped at 136 px desktop and 120–130 px smaller breakpoints, with thin blue outlines, centered names, understated roles, and the original institutional footer row.
-- Research Summary: focused mobile review confirmed a 39 px display title at 390 px, readable line wrapping, no clipping, and a 375 px document scroll width inside the 390 px viewport.
-- Dashboard evidence: the Administrator screenshot uses the same interface composition as the source but replaces identifying/event details with demonstration labels. All dashboard crops and enlargement controls remain clear.
+- At 390 × 1100, the entire mobile hero is visible in one browser capture. The mark is fully contained, the divider is visible, both metadata labels sit below it, and the next section begins after the hero.
+- At 390 × 844, measured visual-to-footnote separation is 42 px and the footnote-to-next-section separation is 48 px, with a zero-pixel intersection area between the logo region and metadata.
+- At the 620/621 px boundary, the footnote is `position: static` at 620 px and returns to the unchanged tablet `position: absolute` behavior at 621 px. Both widths have zero intersection area.
+- No focused image-quality crop was needed because the supplied hero mark asset, its sizing rule, and its rendering were intentionally unchanged.
 
 ## Required fidelity surfaces
 
-- Fonts and typography: the Segoe UI Variable/system fallback preserves the source’s clean institutional tone. Display weights, compact uppercase labels, body leading, and the mobile Research Summary wrap were visually checked.
-- Spacing and layout rhythm: section-label columns, thin-rule grids, paper-surface transitions, team density, and responsive track changes remain consistent with the editorial reference.
-- Colors and tokens: the warm ivory, navy, CyberShield blue, pale-blue section tint, and restrained yellow focus accent map to the poster and existing showcase language.
-- Image quality and asset fidelity: all supplied marks and portraits remain real raster assets. Runtime hero and Administrator WebPs were quality checked; the latter and hero mark are pixel-identical lossless conversions, while the atmospheric hero background measured 42.74 dB PSNR.
-- Copy and content: public copy identifies the work as an academic prototype, separates participant ratings from security tests, and qualifies unvalidated/deployment-level controls.
-- States and accessibility: mobile navigation, tab keyboard navigation, selected states, dialog escape/focus return, alt text, landmarks, and console output were checked.
+- Fonts and typography: font family, weights, sizes, line heights, letter spacing, and mobile wrapping are unchanged. The existing hierarchy remains readable from 320 px upward.
+- Spacing and layout rhythm: the mobile hero now uses `min-height: calc(100svh - 72px)` with `72px 0 48px` inner padding. The metadata participates in normal flow with 8 px top margin, 18 px top padding, and a 6 px internal gap. The obsolete 850 px narrow-screen minimum was removed.
+- Colors and visual tokens: the atmospheric background, navy/blue palette, divider, and metadata colors are unchanged.
+- Image quality and asset fidelity: the original `cybershield-hero-mark.webp` remains in use with the existing responsive size rules; it was not regenerated, cropped, or replaced.
+- Copy and content: hero headline, description, CTA labels, logo alt text, and metadata are unchanged by the fix.
+- States and accessibility: keyboard focus remains visible with the existing yellow 3 px outline and 5 px offset. The semantic order remains copy → visual → footnote. Browser console warnings/errors were empty on `/` and `/research/`.
 
 ## Findings and comparison history
 
 ### Iteration 1
 
-- [P2] Mobile Research Summary title dominated the first viewport.
-  - Evidence: at 390 × 844, the initial display scale pushed the lead and prototype notice too far below the title.
-  - Fix: reduced the mobile title clamp from the initial 2.35rem/12vw scale to `clamp(2rem, 10vw, 3rem)`.
-  - Post-fix evidence: in-app browser recapture at 390 × 844 measured a 39 px font size, kept the full title readable, brought the lead and disclosure into the first viewport, and retained zero horizontal overflow.
+- [P1] Mobile hero metadata overlapped the hero mark.
+  - Location: `.hero-footnote` within the `@media (width <= 620px)` rules in `src/styles/global.css`.
+  - Evidence: the source implementation combined a vertically flowing mobile hero with an absolutely positioned footnote (`bottom: 74px`) and fixed minimum heights, so the metadata could occupy the same space as the responsive logo.
+  - Impact: the divider and institutional metadata could cover the hero mark or be pushed into the next section on short/narrow phones.
+  - Fix: returned the mobile footnote to normal flow, cleared its positional offsets, converted it to a compact column, replaced the fixed hero minimum with a small-viewport-aware minimum, removed the narrow 850 px override, and allowed the visual wrapper to size from its content.
+  - Post-fix evidence: 320–620 px checks show zero visual/footnote intersection, no horizontal overflow, and visible separation before the following section. The 620/621 transition also remains clean.
 
 ### Iteration 2
 
-- No actionable P0, P1, or P2 differences remained in the hero, team, dashboard, or Research Summary comparisons.
+- No actionable P0, P1, or P2 findings remain.
 
-## Open questions
+## Open questions and residual test gaps
 
-- None blocking. Physical-device and deployed signed-out validation remain release checks rather than design mismatches.
-
-## Follow-up polish
-
-- [P3] Consider a dedicated serif or humanist display face only if the project later adds licensed local font assets; the current system-font stack is intentionally dependency-free and visually consistent.
+- Physical iPhone Safari testing was not available in this environment. Browser-based responsive validation covered the requested phone, breakpoint, tablet, and desktop widths.
 
 ## Implementation checklist
 
-- [x] Preserve poster-inspired hero identity and supplied imagery.
-- [x] Add verified objectives/scope and a dedicated Research Summary.
-- [x] Replace the Administrator placeholder with sanitized public evidence.
-- [x] Keep team portraits compact, circular, consistent, and responsive.
-- [x] Confirm keyboard interactions, console state, responsive layout, and production build.
+- [x] Keep the existing hero content and component structure unchanged.
+- [x] Move mobile metadata into normal document flow.
+- [x] Preserve the full-size hero mark and continuous background.
+- [x] Remove conflicting mobile fixed/minimum-height assumptions.
+- [x] Verify 320–430 px phone widths and the 620/621 px breakpoint boundary.
+- [x] Confirm no horizontal overflow, visible keyboard focus, clean console output, and successful production build.
 
 final result: passed
