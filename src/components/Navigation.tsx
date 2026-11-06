@@ -8,6 +8,7 @@ const links = [
   ["Results", "results"],
   ["Method", "methodology"],
   ["Team", "team"],
+  ["Reviews", "reviews"],
 ];
 
 export default function Navigation() {
