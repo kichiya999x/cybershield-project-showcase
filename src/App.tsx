@@ -5,6 +5,7 @@ import Security from "./sections/Security";
 import DevelopedSystem from "./sections/DevelopedSystem";
 import Results from "./sections/Results";
 import { Methodology, Team, Footer } from "./sections/Closing";
+import Reviews from "./sections/Reviews";
 export default function App() {
   return (
     <>
@@ -23,6 +24,7 @@ export default function App() {
         <Results />
         <Methodology />
         <Team />
+        <Reviews />
       </main>
       <Footer />
     </>
